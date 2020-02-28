@@ -4,8 +4,9 @@
 
     public function __construct() {
       parent::__construct();
+
       $this->load->library('form_validation');
-      $this->load->library('encryption');
+      $this->load->helper('hashPassword');
       $this->load->model('RegisterModel');
       $this->load->model('AuthSession');
     }
@@ -27,7 +28,7 @@
       $user = array(
         'name'     => $input->post('username'),
         'email'    => $input->post('email'),
-        'password' => $this->encryption->encrypt($input->post('password'))
+        'password' => hash_password($input->post('password'))
       );
 
       return $user;

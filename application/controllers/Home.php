@@ -10,7 +10,8 @@ class Home extends CI_Controller {
 
 	public function index() {
 		if (!($this->AuthSession->get('logged'))):
-			return redirect('login');
+			redirect('login');
+			return false;
 		endif;
 
 		$this->load->view('templates/header');
