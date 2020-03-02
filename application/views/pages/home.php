@@ -1,5 +1,5 @@
 <?php require_once "add-record-modal.php"; ?>
-<div class="container mt-5">
+<div class="container pt-5 mt-5">
   <form method="post" id="form-records" action="<?php echo base_url() ?>home/fetchRecords">
     <div class="form-row aling-items-center">
       <div class="form-group col-12">
@@ -57,9 +57,3 @@
       </script>
   <?php endif; ?>
 </div>
-
-<script>
-  $(document).ready(function() {
-    $('.date').mask('00/00/0000');
-  });
-</script>

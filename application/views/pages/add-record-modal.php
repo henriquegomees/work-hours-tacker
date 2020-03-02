@@ -38,6 +38,21 @@
       $('#form-register').submit();
     });
 
-    $('.time').mask('00:00');
+    const target = document.getElementById('registerTimeModal');
+    const observer = new MutationObserver(function(mutationsList) {
+      if($('#registerTimeModal').hasClass("show")) {
+        const now = new Date();
+        const hour = now.getHours();
+        const minutes = now.getMinutes();
+        $('input[name="time"]').val(`${hour}:${minutes}`);
+      }
+    });
+
+    observer.observe(target, {
+      attributes: true, 
+      attributeFilter: ['class']
+    });
   });
+
+
 </script>

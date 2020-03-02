@@ -4,6 +4,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
   </body>
   <footer>
-
+    <script>
+      $('.date').mask('00/00/0000');
+      $('.time').mask('00:00');
+    </script>
   </footer>
 </html>
