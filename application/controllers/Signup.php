@@ -1,19 +1,19 @@
 <?php 
 
-  class Register extends CI_Controller {
+  class Signup extends CI_Controller {
 
     public function __construct() {
       parent::__construct();
 
       $this->load->library('form_validation');
       $this->load->helper('hashPassword');
-      $this->load->model('RegisterModel');
+      $this->load->model('SignupModel');
       $this->load->model('AuthSession');
     }
 
     public function index() {
       $this->load->view('templates/header');
-      $this->load->view('pages/register');
+      $this->load->view('pages/signup');
       $this->load->view('templates/footer'); 
     }
 

@@ -1,6 +1,6 @@
 <?php 
 
-  class RegisterModel extends CI_Model {
+  class SignupModel extends CI_Model {
     private $usersTable;
 
     function __constructor() {
