@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost:3306',
-	'username' => 'root',
-	'password' => '123456',
-	'database' => 'solidesPonto',
+	'hostname' => 'mysql873.umbler.com',
+	'username' => 'whtroot',
+	'password' => '12345678a',
+	'database' => 'solidesponto',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
