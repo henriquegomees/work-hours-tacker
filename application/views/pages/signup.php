@@ -1,7 +1,7 @@
 <div class="registration-page row justify-content-center align-items-center" style="width: 100%; min-height: 100vh;">
   <div class="card" style="width: 30rem">
     <div class="card-body">
-      <form method="post" action="<?php echo base_url(); ?>register/add">
+      <form method="post" action="<?php echo base_url(); ?>signup/add">
         <div class="form-row">
           <div class="col">
             <div class="form-group">

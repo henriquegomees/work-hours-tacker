@@ -1,20 +1,65 @@
-<div class="container">
-	<h1>Welcome to CodeIgniter!</h1>
+<?php require_once "add-record-modal.php"; ?>
+<div class="container mt-5">
+  <form method="post" id="form-records" action="<?php echo base_url() ?>home/fetchRecords">
+    <div class="form-row aling-items-center">
+      <div class="form-group col-12">
+        <label>Filter by date:</label>
+        <input type="text" class="form-control date" name="date" value="<?php echo set_value('date'); ?>"/>
+        <span class="text-danger mb-0"><?php echo form_error('date') ?></span>
+      </div>
 
-	<div id="body">
-		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
+      <div class="form-group col-12 ml-1">
+        <button type="submit" class="btn btn-primary">Filter</button>
+      </div>
+    </div>
+  </form>
+  <?php if(isset($response)): ?>
+    <?php if(count($response['data']) > 0): ?>
+      <table class="table mt-3">
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Time</th>
+            <th scope="col">Entry or exit</th>
+          </tr>
+        </thead>
 
-		<p>If you would like to edit this page you'll find it located at:</p>
-		<code>application/views/welcome_message.php</code>
+        <tboby>
+          <?php foreach($response['data'] as $item): ?>
+            <tr>
+              <td>
+                <?php echo $item->date; ?>
+              </td>
+              <td>
+                <?php echo $item->time; ?>
+              </td>
+              <td class="<?php echo $item->entry == '0' ? 'text-danger' : 'text-success' ?>">
+                <?php echo $item->entry == '0' ? 'Exit' : 'Entry'; ?>
+              </td>
+            </tr>
+          <?php endforeach; ?>
+        </tboby>
+      </table>
+    <?php else: ?>
+      <p><?php echo $response['message'] ?></p>
+    <?php endif; ?>
+    <?php else: ?>
+      <script>
+        function getCurrentDate() {
+          const today = new Date();
+          return today.toLocaleDateString('pt-BR');
+        };
 
-		<p>The corresponding controller for this page is found at:</p>
-		<code>application/controllers/Welcome.php</code>
-
-		<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
-	</div>
-
-	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
+        if($('input[name="date"]').val() === "") {
+          $('input[name="date"]').val(getCurrentDate());
+          $('#form-records').submit();
+        };
+      </script>
+  <?php endif; ?>
 </div>
 
-</body>
-</html>
+<script>
+  $(document).ready(function() {
+    $('.date').mask('00/00/0000');
+  });
+</script>

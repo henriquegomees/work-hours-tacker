@@ -38,7 +38,7 @@
       $this->loadLoginValidations();
 
       if ($this->form_validation->run() == FALSE):
-        return $this->index();
+        $this->index();
         return false;
       endif;
 

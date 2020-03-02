@@ -40,7 +40,7 @@
       if ($this->form_validation->run()):
         $userData = $this->buildUserData($this->input);
 
-        $id = $this->RegisterModel->insert($userData);
+        $id = $this->SignupModel->insert($userData);
 
         if ($id > 0):
           $newUserData = array_merge($userData, array('id' => $id));
